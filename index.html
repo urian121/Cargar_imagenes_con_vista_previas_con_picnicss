@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cargar imagenes con vista previa solo usando css</title>
+    <link type="text/css" rel="shortcut icon" href="imgs/logo-mywebsite-urian-viera.svg"/>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/material-design-iconic-font/2.2.0/css/material-design-iconic-font.min.css">
+    <link rel="stylesheet" type="text/css" href="css/picnic.min.css">
+    <link rel="stylesheet" type="text/css" href="css/bootstrap.css">
+    <style type="text/css" media="screen">
+    .special{
+      background: #ecf0f3;
+      box-shadow: 5px 13px 15px #cbced1, -13px -13px 10px #fff;
+      border-radius: 0px 0px 10px 10px;
+      padding: 15px;
+    }
+
+    .btn-login{
+    margin: 15px auto;
+    width: 90%;
+    outline: none;
+    border: none;
+    background: #4245a8;
+    font-size: 20px;
+    font-weight: bold;
+    letter-spacing: 1px;
+    color: #fefefe;
+    cursor: pointer;
+    margin-top: 70px;
+    margin-bottom: 120px;
+}
+
+    </style>
+</head>
+<body>
+
+<nav class="navbar navbar-expand-md navbar-dark bg-dark fixed-top">
+<span class="navbar-brand">
+  <img src="imgs/logo-mywebsite-urian-viera.svg" alt="Web Developer Urian Viera" width="120">
+    Web Developer Urian Viera
+</span>
+
+<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
+<span class="navbar-toggler-icon"></span>
+</button>
+</nav>
+
+
+
+
+<div class="container mt-5 special">
+
+<h2 class="text-center mt-2">Cargar Imagenes y Mostrar vista previa solo usando CSS</h2>
+<hr>
+
+<form method="POST" action="recibe_imgs.php" class="login-form" enctype="multipart/form-data">
+  <div class="row">
+    <div class="col-md-4">
+        <div>
+          <label class="dropimage">
+            <input title="Hacer Click aqui" type="file" name="foto1" id="foto1" required="true">
+          </label>
+        </div>
+    </div>
+
+    <div class="col-md-4">
+        <div>
+          <label class="dropimage">
+            <input title="Hacer Click aqui" type="file" name="foto2" id="foto2" required="true">
+          </label>
+        </div>
+    </div>
+
+    <div class="col-md-4">
+        <div>
+          <label class="dropimage miniprofile">
+            <input title="Hacer Click aqui" type="file" name="foto3" id="foto3" required="true">
+          </label>
+        </div>
+    </div>
+
+
+    <button class="btn-login" value="Entrar" >
+        <i class="zmdi zmdi-upload zmdi-hc-2x"></i>
+      Subir Fotos
+    </button>
+
+  </div>  
+</form>
+
+
+
+</div>
+
+
+<script src="js/jquery-3.3.1.min.js"></script>
+<script type="text/javascript">
+document.addEventListener("DOMContentLoaded", function() {
+  [].forEach.call(document.querySelectorAll('.dropimage'), function(img){
+    img.onchange = function(e){
+      var inputfile = this, reader = new FileReader();
+      reader.onloadend = function(){
+        inputfile.style['background-image'] = 'url('+reader.result+')';
+      }
+      reader.readAsDataURL(e.target.files[0]);
+    }
+  });
+});
+</script>
+</body>
+</html>
