@@ -1,7 +1,5 @@
 <?php 
 
-
-
 for ($i=1; $i <=3; $i++) {
     $filename = $_FILES["foto".$i]["name"];
     $source   = $_FILES["foto".$i]["tmp_name"];
